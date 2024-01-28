@@ -64,6 +64,18 @@ This generates the following HTML structure:
 <div id="app"><div class="hello-view view"><h1>Hello</h1></div></div>
 ```
 
+## Routing
+
+Routing in ExtremelySimpleJS is intuitive and mirrors your directory structure within the `base_path`. Here's how it works:
+
+- **Simple Routes:** For a route directly off the root path, create a JavaScript file in the root of your `base_path`. For example, a route to `/about` corresponds to `{base_path}/about.js`.
+
+- **Nested Routes:** More complex, nested routes reflect their directory structure under `base_path`. For instance, the route `/home/blog/articles` corresponds to `{base_path}/home/blog/articles.js`.
+
+- **Dynamic Paths:** For dynamic routing needs, traditional query parameters can be utilized. This approach keeps your routing flexible and easy to manage.
+
+By aligning your file structure with your route paths, ExtremelySimpleJS offers a straightforward and efficient routing mechanism, making the development of multi-level web applications simpler and more organized.
+
 ## Templating
 
 You can encapsulate your views within templates. Define a template in your `App` constructor like this:
