@@ -1,5 +1,5 @@
 import { Element } from "./Element.js"
-import { Template } from "./Template.js";
+import { Template } from "./views/Template.js";
 import { View } from "./View.js";
 
 export class App extends Element
@@ -18,11 +18,16 @@ export class App extends Element
         window.addEventListener('popstate', this.popFunction);
         this.host = (props.host===undefined)?window.location.hostname:props.host
         this.props = props
-        
-        this.template = new Template(this, {class: 'template'});
 
         const path = this.getRoutablePath()
         this.load(this.getRoutablePath())
+
+    }
+
+    async loadTemplate()
+    {
+        let obj = await import(this.props.base_path + this.props.template + '.js');
+        return new obj.default(this, {class: 'template'})
 
     }
 
@@ -38,6 +43,9 @@ export class App extends Element
     }
     async load(url=null)
     {
+        if(!this.template && this.props.template) {
+            this.template = await this.loadTemplate()
+        }
         //document.body.style.cursor = 'wait';
         const params = new URLSearchParams(window.location.search)
         
@@ -62,7 +70,7 @@ export class App extends Element
         } 
 
         // render a view inside the template
-        if(view.useTemplate){
+        if(this.template && view.useTemplate){
             if(!this.isTemplateLoaded){
                 this.clear()
                 this.template.add(this.root)
@@ -162,4 +170,4 @@ export class App extends Element
 
 }
 
-window.app = new App({index: 'home.js', base_path: '/views/'}).add(document.body)
+

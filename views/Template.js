@@ -7,7 +7,7 @@ export class Template extends Element
         super('div', props)
         this.app = app
 
-        this.body = new Element('div', {class: 'app-body'}).add(this.root)
+        this.body = new Element('div', {class: 'template-body'}).add(this.root)
     }
 
     render()
