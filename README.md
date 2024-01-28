@@ -151,7 +151,7 @@ new Element('div', 'Hello <strong>World</strong>', {attribute1: 'attribute 1', a
 // create a div with a click event
 new Element('div', {click: funciton(){ alert('hello world'); })
 // An input element
-new Element('input', {type: 'text' name: 'name', value: 'hello world')
+new Element('input', {type: 'text' name: 'name', value: 'hello world'})
 ```
 
 The fluent API design of `Element.js` allows for method chaining, making your code more concise and readable.
