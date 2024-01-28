@@ -76,7 +76,7 @@ Routing in ExtremelySimpleJS is intuitive and mirrors your directory structure w
 
 By aligning your file structure with your route paths, ExtremelySimpleJS offers a straightforward and efficient routing mechanism, making the development of multi-level web applications simpler and more organized.
 
-## Templating
+## Templates
 
 You can encapsulate your views within templates. Define a template in your `App` constructor like this:
 
